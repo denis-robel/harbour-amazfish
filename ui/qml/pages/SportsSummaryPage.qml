@@ -140,21 +140,44 @@ PageListPL {
                 }
             }
 
+            // First line: kind and duration side by side (baseline aligned).
+            // Second line: date and time over the full width, wrapping to a second
+            // line instead of being cut off on narrow screens or with large fonts.
             Column {
                 id: textColumn
                 anchors.left: workoutImage.right
                 anchors.leftMargin: styler.themePaddingLarge
-                anchors.right: durationLabel.left
-                anchors.rightMargin: styler.themePaddingMedium
+                anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
 
-                LabelPL {
-                    id: nameLabel
+                Item {
                     width: parent.width
-                    text: T.translateSportKind(kindstring)
-                    color: listItem.showPressed ? styler.themeHighlightColor : styler.themePrimaryColor
-                    font.pixelSize: styler.themeFontSizeMedium
-                    truncMode: truncModes.fade
+                    height: Math.max(nameLabel.height, durationLabel.height)
+
+                    LabelPL {
+                        id: nameLabel
+                        anchors.left: parent.left
+                        anchors.right: durationLabel.left
+                        anchors.rightMargin: styler.themePaddingMedium
+                        text: T.translateSportKind(kindstring)
+                        color: listItem.showPressed ? styler.themeHighlightColor : styler.themePrimaryColor
+                        font.pixelSize: styler.themeFontSizeMedium
+                        // long kinds ("Freiwasserschwimmen") shrink first, down to the
+                        // size of the duration, and are only faded out after that
+                        fontSizeMode: Text.HorizontalFit
+                        minimumPixelSize: styler.themeFontSizeSmall
+                        truncMode: truncModes.fade
+                    }
+
+                    LabelPL {
+                        id: durationLabel
+                        anchors.right: parent.right
+                        anchors.baseline: nameLabel.baseline
+                        text: fncCovertSecondsToString((enddate - startdate) / 1000)
+                        color: listItem.showPressed ? styler.themeHighlightColor : styler.themePrimaryColor
+                        font.pixelSize: styler.themeFontSizeSmall
+                        horizontalAlignment: Text.AlignRight
+                    }
                 }
 
                 LabelPL {
@@ -163,18 +186,10 @@ PageListPL {
                     text: Qt.formatDate(startdate, "ddd") + " " + startdate.toLocaleDateString(Qt.locale(), Locale.ShortFormat) + " · " + listItem.timesText
                     color: listItem.showPressed ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
                     font.pixelSize: styler.themeFontSizeExtraSmall
-                    truncMode: truncModes.fade
+                    wrapMode: Text.WordWrap
+                    maximumLineCount: 2
+                    elide: Text.ElideRight
                 }
-            }
-
-            LabelPL {
-                id: durationLabel
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-                text: fncCovertSecondsToString((enddate - startdate) / 1000)
-                color: listItem.showPressed ? styler.themeHighlightColor : styler.themePrimaryColor
-                font.pixelSize: styler.themeFontSizeSmall
-                horizontalAlignment: Text.AlignRight
             }
         }
 

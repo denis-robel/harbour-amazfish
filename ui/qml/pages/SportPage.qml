@@ -298,7 +298,7 @@ PagePL {
 
                 Rectangle {
                     id: kindCircle
-                    width: styler.themeItemSizeLarge * 0.8
+                    width: styler.themeItemSizeLarge * 0.6
                     height: width
                     radius: width / 2
                     color: Glass.chip
@@ -320,40 +320,57 @@ PagePL {
                         text: T.translateSportKind(kindstring)
                         color: styler.themeHighlightColor
                         font.pixelSize: styler.themeFontSizeLarge
-                        truncMode: truncModes.fade
+                        wrapMode: Text.WordWrap
+                        maximumLineCount: 2
+                        elide: Text.ElideRight
                     }
                     LabelPL {
                         width: parent.width
                         text: times !== "" ? date + " · " + times : date + " · " + starttime
                         color: styler.themeSecondaryHighlightColor
                         font.pixelSize: styler.themeFontSizeSmall
-                        truncMode: truncModes.fade
+                        wrapMode: Text.WordWrap
+                        maximumLineCount: 2
+                        elide: Text.ElideRight
                     }
                 }
             }
 
             // key figures
             Grid {
+                id: statGrid
                 width: parent.width
                 columns: 2
+                columnSpacing: styler.themePaddingLarge
                 rowSpacing: styler.themePaddingMedium
+                readonly property real cellWidth: (width - columnSpacing) / 2
+                // all four values shrink to the size the widest one needs
+                readonly property real sharedScale: Math.min(statDuration.fitScale, statDistance.fitScale,
+                                                             statPace.visible ? statPace.fitScale : 1,
+                                                             statHeartrate.fitScale)
 
-                StatTile { width: parent.width / 2; value: duration; label: qsTr("Duration") }
+                StatTile { id: statDuration; sharedScale: statGrid.sharedScale; width: statGrid.cellWidth; value: duration; label: qsTr("Duration") }
                 StatTile {
-                    width: parent.width / 2
+                    id: statDistance
+                    sharedScale: statGrid.sharedScale
+                    width: statGrid.cellWidth
                     value: trackDistance > 0 ? (trackDistance / 1000).toLocaleString(Qt.locale(), "f", 2) : "–"
                     unit: trackDistance > 0 ? "km" : ""
                     label: qsTr("Distance")
                 }
                 StatTile {
-                    width: parent.width / 2
+                    id: statPace
+                    sharedScale: statGrid.sharedScale
+                    width: statGrid.cellWidth
                     visible: paceRelevant
                     value: trackPace !== "" ? trackPace : "–"
                     unit: trackPace !== "" ? "/km" : ""
                     label: qsTr("Average Pace")
                 }
                 StatTile {
-                    width: parent.width / 2
+                    id: statHeartrate
+                    sharedScale: statGrid.sharedScale
+                    width: statGrid.cellWidth
                     value: trackHeartrate > 0 ? Math.round(trackHeartrate) : "–"
                     unit: trackHeartrate > 0 ? qsTr("BPM") : ""
                     label: qsTr("Average Heart Rate")
