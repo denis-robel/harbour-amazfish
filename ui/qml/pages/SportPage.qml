@@ -3,6 +3,7 @@ import "../components/platform"
 import "../tools/JSTools.js" as JSTools
 import "../components/Translation.js" as T
 import "../components/ChartColors.js" as ChartColors
+import "../components/GlassStyle.js" as Glass
 import MapboxMap 1.0
 import QtPositioning 5.3
 import QtQuick 2.0
@@ -300,7 +301,7 @@ PagePL {
                     width: styler.themeItemSizeLarge * 0.8
                     height: width
                     radius: width / 2
-                    color: ChartColors.withAlpha(ChartColors.active, 0.2)
+                    color: Glass.chip
 
                     IconPL {
                         anchors.centerIn: parent

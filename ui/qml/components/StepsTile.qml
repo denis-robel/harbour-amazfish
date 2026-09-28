@@ -3,6 +3,7 @@ import QtQuick.Layouts 1.1
 import uk.co.piggz.amazfish 1.0
 import "./platform"
 import "ChartColors.js" as ChartColors
+import "GlassStyle.js" as Glass
 
 // Gadgetbridge-style "Today" widget: 24 h ring coloured by sleep / activity,
 // with a goal gauge and the step count in the middle.
@@ -40,30 +41,28 @@ Tile {
         height: width
         samples: tile.samples
         startTime: tile.startTime
-        idleColor: ChartColors.withAlpha(styler.blockBg, 0.30)
-        emptyColor: ChartColors.withAlpha(styler.blockBg, 0.12)
 
         GaugeArc {
             anchors.centerIn: parent
             width: ring.width * 0.74
             height: width
             value: stepGoal > 0 ? stepCount / stepGoal : 0
-            color: styler.blockBg
-            trackColor: ChartColors.withAlpha(styler.blockBg, 0.25)
+            color: styler.themeHighlightColor
+            trackColor: Glass.track
             lineWidth: ring.lineWidth * 0.8
 
             Column {
                 anchors.centerIn: parent
                 LabelPL {
                     anchors.horizontalCenter: parent.horizontalCenter
-                    color: styler.blockBg
+                    color: styler.themePrimaryColor
                     font.pixelSize: styler.themeFontSizeHuge
                     text: Number(stepCount).toLocaleString(Qt.locale(), "f", 0)
                 }
                 LabelPL {
                     anchors.horizontalCenter: parent.horizontalCenter
-                    color: styler.blockBg
-                    font.pixelSize: styler.themeFontSizeMedium
+                    color: styler.themeSecondaryColor
+                    font.pixelSize: styler.themeFontSizeSmall
                     text: stepGoal > 0 ? qsTr("of %1").arg(Number(stepGoal).toLocaleString(Qt.locale(), "f", 0)) : ""
                 }
             }

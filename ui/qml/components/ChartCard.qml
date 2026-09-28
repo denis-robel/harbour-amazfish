@@ -16,13 +16,13 @@ Item {
     width: parent ? parent.width : 0
     height: column.height + 2 * padding
 
-    Rectangle {
+    GlassPanel {
         anchors.fill: parent
-        radius: styler.themePaddingLarge
-        color: ChartColors.withAlpha(styler.themeHighlightColor, 0.08)
+        pressed: cardMouse.pressed && cardMouse.containsMouse
     }
 
     MouseArea {
+        id: cardMouse
         anchors.fill: parent
         onClicked: card.clicked()
     }
@@ -45,7 +45,8 @@ Item {
                 anchors.right: lblInfo.left
                 anchors.rightMargin: styler.themePaddingMedium
                 text: card.title.toUpperCase()
-                color: styler.themeSecondaryHighlightColor
+                color: styler.themeHighlightColor
+                opacity: 0.85
                 font.pixelSize: styler.themeFontSizeExtraSmall
                 font.bold: true
                 font.letterSpacing: 1

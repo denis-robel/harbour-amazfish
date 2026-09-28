@@ -1,6 +1,7 @@
 import "../components/"
 import "../components/platform"
 import "../components/Translation.js" as T
+import "../components/GlassStyle.js" as Glass
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import uk.co.piggz.amazfish 1.0
@@ -42,7 +43,14 @@ PageListPL {
     delegate: ListItemPL {
         id: listItem
 
-        contentHeight: Math.max(styler.themeItemSizeSmall, textColumn.height) + 2 * styler.themePaddingMedium
+        // grouping: first/last activity of a month (the model is sorted by date)
+        readonly property string monthKey: SportsModel.monthKeyAt(index)
+        readonly property bool firstOfMonth: SportsModel.monthKeyAt(index - 1) !== monthKey
+        readonly property bool lastOfMonth: SportsModel.monthKeyAt(index + 1) !== monthKey
+        readonly property real rowHeight: Math.max(styler.themeItemSizeSmall, textColumn.height) + 2 * styler.themePaddingMedium
+        readonly property real headerHeight: firstOfMonth ? monthLabel.height + 2 * styler.themePaddingMedium : 0
+
+        contentHeight: headerHeight + rowHeight + (lastOfMonth ? styler.themePaddingLarge : 0)
         onClicked: {
             var sportpage = app.pages.push(Qt.resolvedUrl("SportPage.qml"), {
                 "activityId": model.id,
@@ -64,16 +72,64 @@ PageListPL {
         readonly property bool showPressed: listItem.highlighted === true
         readonly property string timesText: startdate.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + " – " + enddate.toLocaleTimeString(Qt.locale(), Locale.ShortFormat)
 
-        // Plain Silica-style row: icon, two lines of text, duration on the right.
-        // No cards or tinted backgrounds; hierarchy comes from primary/secondary colours only.
+        // Month header above the first activity of each month
+        LabelPL {
+            id: monthLabel
+            visible: listItem.firstOfMonth
+            x: styler.themeHorizontalPageMargin + styler.themePaddingSmall
+            y: styler.themePaddingMedium
+            text: startdate.toLocaleDateString(Qt.locale(), "MMMM yyyy").toUpperCase()
+            color: styler.themeHighlightColor
+            opacity: 0.85
+            font.pixelSize: styler.themeFontSizeExtraSmall
+            font.bold: true
+            font.letterSpacing: 1
+        }
+
+        // Each row is one slice of its month's glass card: the first slice keeps the
+        // rounded top, the last the rounded bottom; the others are clipped straight.
         Item {
+            id: slice
             x: styler.themeHorizontalPageMargin
+            y: listItem.headerHeight
             width: parent.width - 2 * x
-            height: listItem.contentHeight
+            height: listItem.rowHeight
+            clip: true
+
+            GlassPanel {
+                id: groupGlass
+                width: parent.width
+                y: listItem.firstOfMonth ? 0 : -radius
+                height: slice.height + (listItem.firstOfMonth ? 0 : radius) + (listItem.lastOfMonth ? 0 : radius)
+            }
+
+            Rectangle {
+                visible: !listItem.firstOfMonth
+                x: styler.themePaddingLarge
+                width: parent.width - 2 * x
+                height: 1
+                color: Glass.divider
+            }
+        }
+
+        Item {
+            x: slice.x + styler.themePaddingLarge
+            y: slice.y
+            width: slice.width - 2 * styler.themePaddingLarge
+            height: slice.height
+
+            Rectangle {
+                anchors.centerIn: workoutImage
+                width: styler.themeIconSizeMedium * 1.15
+                height: width
+                radius: width / 2
+                color: Glass.chip
+            }
 
             Loader {
                 id: workoutImage
                 anchors.verticalCenter: parent.verticalCenter
+                x: styler.themeIconSizeMedium * 0.075
                 width: styler.themeIconSizeMedium
                 height: width
                 sourceComponent: IconPL {
