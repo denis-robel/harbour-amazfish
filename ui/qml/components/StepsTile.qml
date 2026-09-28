@@ -15,7 +15,9 @@ Tile {
     property var samples: []
     property var startTime: 0
 
-    text: qsTr("Steps")
+    // bottom of the tile: progress towards the daily goal
+    value: stepGoal > 0 ? qsTr("%1 %").arg(Math.round(stepCount / stepGoal * 100)) : ""
+    text: stepGoal > 0 ? qsTr("Steps · daily goal") : qsTr("Steps")
 
     function refresh() {
         var start = new Date();
@@ -34,36 +36,98 @@ Tile {
 
     Component.onCompleted: refresh()
 
-    contentItem: DayRing {
-        id: ring
-        anchors.centerIn: parent
-        width: Math.min(parent.width, parent.height)
-        height: width
-        samples: tile.samples
-        startTime: tile.startTime
+    // Ring on the left, legend on the right (mockup variant B)
+    contentItem: Item {
+        id: area
+        anchors.fill: parent
 
-        GaugeArc {
-            anchors.centerIn: parent
-            width: ring.width * 0.74
+        DayRing {
+            id: ring
+            anchors.verticalCenter: parent.verticalCenter
+            width: Math.min(area.height, area.width * 0.58)
             height: width
-            value: stepGoal > 0 ? stepCount / stepGoal : 0
-            color: styler.themeHighlightColor
-            trackColor: Glass.track
-            lineWidth: ring.lineWidth * 0.8
+            samples: tile.samples
+            startTime: tile.startTime
+            showHourMarks: true
 
-            Column {
+            GaugeArc {
+                id: gauge
                 anchors.centerIn: parent
-                LabelPL {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    color: styler.themePrimaryColor
-                    font.pixelSize: styler.themeFontSizeHuge
-                    text: Number(stepCount).toLocaleString(Qt.locale(), "f", 0)
+                width: ring.innerRadius * 2
+                height: width
+                value: stepGoal > 0 ? stepCount / stepGoal : 0
+                color: styler.themeHighlightColor
+                trackColor: Glass.track
+                lineWidth: ring.lineWidth * 0.75
+
+                Column {
+                    anchors.centerIn: parent
+                    width: gauge.width * 0.7
+
+                    LabelPL {
+                        width: parent.width
+                        horizontalAlignment: Text.AlignHCenter
+                        color: styler.themePrimaryColor
+                        font.pixelSize: Math.min(styler.themeFontSizeLarge, gauge.width * 0.22)
+                        fontSizeMode: Text.HorizontalFit
+                        minimumPixelSize: font.pixelSize * 0.6
+                        text: Number(stepCount).toLocaleString(Qt.locale(), "f", 0)
+                    }
+                    LabelPL {
+                        width: parent.width
+                        horizontalAlignment: Text.AlignHCenter
+                        color: styler.themeSecondaryColor
+                        font.pixelSize: Math.min(styler.themeFontSizeExtraSmall, gauge.width * 0.11)
+                        fontSizeMode: Text.HorizontalFit
+                        minimumPixelSize: font.pixelSize * 0.6
+                        text: stepGoal > 0 ? qsTr("of %1").arg(Number(stepGoal).toLocaleString(Qt.locale(), "f", 0)) : ""
+                    }
                 }
-                LabelPL {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    color: styler.themeSecondaryColor
-                    font.pixelSize: styler.themeFontSizeSmall
-                    text: stepGoal > 0 ? qsTr("of %1").arg(Number(stepGoal).toLocaleString(Qt.locale(), "f", 0)) : ""
+            }
+        }
+
+        Column {
+            id: legend
+            anchors.left: ring.right
+            anchors.leftMargin: styler.themePaddingMedium
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+            spacing: styler.themePaddingSmall
+
+            Repeater {
+                // colours come from the same values the ring is drawn with
+                model: [
+                    { color: ChartColors.deepSleep, label: qsTr("Deep sleep"), line: false },
+                    { color: ChartColors.lightSleep, label: qsTr("Light sleep"), line: false },
+                    { color: ChartColors.active, label: qsTr("Active"), line: false },
+                    { color: ring.idleColor, label: qsTr("Inactive"), line: false },
+                    { color: styler.themeHighlightColor, label: qsTr("Step goal"), line: true }
+                ]
+                delegate: Item {
+                    width: legend.width
+                    height: legendLabel.height
+
+                    Rectangle {
+                        id: swatch
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: modelData.line ? legendLabel.font.pixelSize * 1.2 : legendLabel.font.pixelSize * 0.7
+                        height: modelData.line ? Math.max(2, legendLabel.font.pixelSize * 0.3) : width
+                        radius: height / 2
+                        color: modelData.color
+                    }
+                    LabelPL {
+                        id: legendLabel
+                        anchors.left: swatch.right
+                        anchors.leftMargin: styler.themePaddingSmall
+                        anchors.right: parent.right
+                        text: modelData.label
+                        color: styler.themeSecondaryColor
+                        font.pixelSize: styler.themeFontSizeExtraSmall
+                        // long translations shrink a little before they are faded out
+                        fontSizeMode: Text.HorizontalFit
+                        minimumPixelSize: styler.themeFontSizeExtraSmall * 0.75
+                        truncMode: truncModes.fade
+                    }
                 }
             }
         }

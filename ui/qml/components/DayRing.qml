@@ -14,6 +14,12 @@ Item {
     property int activeIntensity: 15
     property color idleColor: ChartColors.withAlpha(styler.themeSecondaryColor, 0.3)
     property color emptyColor: ChartColors.withAlpha(styler.themeSecondaryColor, 0.12)
+    property bool showHourMarks: false          // ticks and labels at 0, 6, 12 and 18 h
+    // mark labels scale with the ring so they always fit inside it
+    readonly property real markFontSize: Math.max(8, width * 0.075)
+    readonly property real markSpace: showHourMarks ? markFontSize * 1.9 : 0
+    // radius left free inside the ring and its hour marks, e.g. for a goal gauge
+    readonly property real innerRadius: Math.max(0, Math.min(width, height) / 2 - lineWidth - markSpace)
     default property alias content: centre.data
 
     implicitWidth: styler.themeItemSizeLarge * 3
@@ -21,6 +27,7 @@ Item {
 
     onSamplesChanged: canvas.requestPaint()
     onIdleColorChanged: canvas.requestPaint()
+    onShowHourMarksChanged: canvas.requestPaint()
 
     ChartCanvas {
         id: canvas
@@ -67,6 +74,29 @@ Item {
                 ctx.beginPath();
                 ctx.arc(cx, cy, rad, a, a + step * 1.02, false);   // slight overlap avoids hairline gaps
                 ctx.stroke();
+            }
+
+            if (!ring.showHourMarks) {
+                return;
+            }
+            // hour marks just inside the ring, midnight at the top
+            var fontPx = ring.markFontSize;
+            var inner = rad - ring.lineWidth / 2;
+            ctx.lineWidth = Math.max(1, fontPx / 7);
+            ctx.strokeStyle = ChartColors.withAlpha(styler.themeSecondaryColor, 0.8);
+            ctx.fillStyle = styler.themeSecondaryColor;
+            ctx.font = fontPx + "px \"" + styler.themeFontFamily + "\"";
+            ctx.textAlign = "center";
+            var hours = [0, 6, 12, 18];
+            for (var h = 0; h < hours.length; h++) {
+                var ang = -Math.PI / 2 + hours[h] / 24 * 2 * Math.PI;
+                var cos = Math.cos(ang), sin = Math.sin(ang);
+                ctx.beginPath();
+                ctx.moveTo(cx + (inner - 1) * cos, cy + (inner - 1) * sin);
+                ctx.lineTo(cx + (inner - fontPx * 0.45) * cos, cy + (inner - fontPx * 0.45) * sin);
+                ctx.stroke();
+                var lr = inner - fontPx * 1.15;
+                ctx.fillText(hours[h], cx + lr * cos, cy + lr * sin + fontPx * 0.35);
             }
         }
     }
