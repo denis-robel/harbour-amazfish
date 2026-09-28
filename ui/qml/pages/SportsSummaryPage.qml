@@ -22,13 +22,6 @@ PageListPL {
         SportsModel.update();
     }
 
-    IconPL {
-        id: sharedIconTime
-
-        iconName: styler.iconClock
-        visible: false
-    }
-
     Connections {
         target: DaemonInterfaceInstance
         onOperationRunningChanged: {
@@ -49,7 +42,7 @@ PageListPL {
     delegate: ListItemPL {
         id: listItem
 
-        contentHeight: styler.themeItemSizeSmall + (styler.themePaddingMedium * 2)
+        contentHeight: Math.max(styler.themeItemSizeSmall, textColumn.height) + 2 * styler.themePaddingMedium
         onClicked: {
             var sportpage = app.pages.push(Qt.resolvedUrl("SportPage.qml"), {
                 "activityId": model.id,
@@ -58,7 +51,7 @@ PageListPL {
                 "location": [baselatitude, baselongitude, basealtitude],
                 "starttime": Qt.formatDateTime(startdate, "hh:mm:ss"),
                 "duration": durationLabel.text,
-                "times": timesLabel.text,
+                "times": timesText,
                 "kindstring": kindstring,
                 "tcx": SportsModel.gpx(id),
                 "rawGpx": SportsModel.rawGpx(id)
@@ -67,94 +60,66 @@ PageListPL {
             sportpage.update();
         }
 
-        Row {
-            id: listItemRow
+        // pressed feedback where the platform's list item provides it (Silica, Kirigami, QtControls)
+        readonly property bool showPressed: listItem.highlighted === true
+        readonly property string timesText: startdate.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + " – " + enddate.toLocaleTimeString(Qt.locale(), Locale.ShortFormat)
 
-            width: parent.width - (2 * styler.themePaddingLarge)
-            spacing: styler.themePaddingLarge * 2
-            anchors.left: parent.left
-            anchors.leftMargin: styler.themePaddingLarge * 2
-            anchors.right: parent.right
-            anchors.rightMargin: styler.themePaddingLarge * 2
+        // Plain Silica-style row: icon, two lines of text, duration on the right.
+        // No cards or tinted backgrounds; hierarchy comes from primary/secondary colours only.
+        Item {
+            x: styler.themeHorizontalPageMargin
+            width: parent.width - 2 * x
+            height: listItem.contentHeight
 
             Loader {
                 id: workoutImage
-
-                anchors.top: parent.top
-                anchors.topMargin: styler.themePaddingMedium
-                width: styler.themeItemSizeSmall
+                anchors.verticalCenter: parent.verticalCenter
+                width: styler.themeIconSizeMedium
                 height: width
-
                 sourceComponent: IconPL {
                     iconSource: styler.activityIconPrefix + "icon-m-" + kindstring.toLowerCase() + styler.customIconSuffix
-                    width: styler.themeItemSizeSmall
+                    width: workoutImage.width
                     height: width
+                    opacity: listItem.showPressed ? 0.6 : 1.0
                 }
-
             }
 
             Column {
-                id: leftColumn
-
-                anchors.top: parent.top
-                anchors.topMargin: styler.themePaddingMedium
-                width: (parent.width - workoutImage.width - (styler.themePaddingLarge * 4)) * 0.5
-                spacing: styler.themePaddingSmall
+                id: textColumn
+                anchors.left: workoutImage.right
+                anchors.leftMargin: styler.themePaddingLarge
+                anchors.right: durationLabel.left
+                anchors.rightMargin: styler.themePaddingMedium
+                anchors.verticalCenter: parent.verticalCenter
 
                 LabelPL {
                     id: nameLabel
-
+                    width: parent.width
                     text: T.translateSportKind(kindstring)
+                    color: listItem.showPressed ? styler.themeHighlightColor : styler.themePrimaryColor
+                    font.pixelSize: styler.themeFontSizeMedium
+                    truncMode: truncModes.fade
                 }
 
                 LabelPL {
                     id: dateLabel
-
-                    text: Qt.formatDate(startdate, "ddd") + " " + startdate.toLocaleDateString(Qt.locale(), Locale.ShortFormat)
+                    width: parent.width
+                    text: Qt.formatDate(startdate, "ddd") + " " + startdate.toLocaleDateString(Qt.locale(), Locale.ShortFormat) + " · " + listItem.timesText
+                    color: listItem.showPressed ? styler.themeSecondaryHighlightColor : styler.themeSecondaryColor
+                    font.pixelSize: styler.themeFontSizeExtraSmall
+                    truncMode: truncModes.fade
                 }
-
             }
 
-            Column {
-                id: rightColumn
-
-                anchors.top: parent.top
-                anchors.topMargin: styler.themePaddingMedium
-                width: leftColumn.width
-                spacing: styler.themePaddingSmall
-
-                Row {
-                    anchors.right: parent.right
-                    spacing: styler.themePaddingSmall
-
-                    IconPL {
-                        id: durationImage
-
-                        height: durationLabel.height
-                        width: height
-                        asynchronous: true
-                        source: sharedIconTime.source
-                    }
-
-                    LabelPL {
-                        id: durationLabel
-
-                        text: fncCovertSecondsToString((enddate - startdate) / 1000)
-                        horizontalAlignment: Text.AlignRight
-                    }
-
-                }
-
-                LabelPL {
-                    id: timesLabel
-
-                    anchors.right: parent.right
-                    text: startdate.toLocaleTimeString(Qt.locale(), Locale.ShortFormat) + " ⟶ " + enddate.toLocaleTimeString(Qt.locale(), Locale.ShortFormat)
-                    horizontalAlignment: Text.AlignRight
-                }
-
+            LabelPL {
+                id: durationLabel
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                text: fncCovertSecondsToString((enddate - startdate) / 1000)
+                color: listItem.showPressed ? styler.themeHighlightColor : styler.themePrimaryColor
+                font.pixelSize: styler.themeFontSizeSmall
+                horizontalAlignment: Text.AlignRight
             }
-
         }
 
         menu: ContextMenuPL {

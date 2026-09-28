@@ -51,8 +51,11 @@
         <file>./qml/components/DetailRow.qml</file>
         <file>./qml/components/GaugeArc.qml</file>
         <file>./qml/components/HeartRateChart.qml</file>
+        <file>./qml/components/RouteShape.qml</file>
         <file>./qml/components/SleepPhaseChart.qml</file>
+        <file>./qml/components/StatTile.qml</file>
         <file>./qml/components/SummaryBarChart.qml</file>
+        <file>./qml/components/TrackChart.qml</file>
         <file>./qml/components/Alarm.qml</file>
         <file>./qml/components/Axis.qml</file>
         <file>./qml/components/DateNavigation.qml</file>
