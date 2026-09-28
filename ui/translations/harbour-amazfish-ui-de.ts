@@ -1966,7 +1966,7 @@
         <translation type="vanished">Kalorien</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="359"/>
+        <location filename="../qml/pages/SportPage.qml" line="400"/>
         <source>Distance</source>
         <translation>Distanz</translation>
     </message>
@@ -1985,89 +1985,90 @@
         <translation>%1 °; %2 °; %3 m</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="352"/>
+        <location filename="../qml/pages/SportPage.qml" line="393"/>
         <source>Duration</source>
         <translation>Dauer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="375"/>
+        <location filename="../qml/pages/SportPage.qml" line="416"/>
         <source>BPM</source>
         <translation>bpm</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="384"/>
+        <location filename="../qml/pages/SportPage.qml" line="425"/>
         <source>Route</source>
         <translation>Route</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="454"/>
+        <location filename="../qml/pages/SportPage.qml" line="495"/>
         <source>Loading track…</source>
         <translation>Strecke wird geladen …</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="455"/>
+        <location filename="../qml/pages/SportPage.qml" line="496"/>
         <source>The watch did not send a start position for this workout. The route is only known relative to its start, so its shape can be shown but not where it is on a map.</source>
         <translation>Die Uhr hat für dieses Training keinen Startpunkt übertragen. Die Strecke ist nur relativ zu ihrem Start bekannt, daher kann ihre Form angezeigt werden, aber nicht, wo sie auf der Karte liegt.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="456"/>
+        <location filename="../qml/pages/SportPage.qml" line="497"/>
         <source>Distance, pace and shape were corrected using the distance measured by the watch.</source>
         <translation>Distanz, Tempo und Form wurden anhand der von der Uhr gemessenen Strecke korrigiert.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="457"/>
+        <location filename="../qml/pages/SportPage.qml" line="498"/>
         <source>This activity contains no GPS positions. The watch recorded it without GPS (e.g. indoors, or GPS had no fix), so there is no route to show.</source>
         <translation>Diese Aktivität enthält keine GPS-Positionen. Die Uhr hat sie ohne GPS aufgezeichnet (z. B. drinnen oder ohne GPS-Empfang), daher gibt es keine Route.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="458"/>
+        <location filename="../qml/pages/SportPage.qml" line="499"/>
         <source>The track file of this activity could not be read. It may have been moved or deleted, or the app is not allowed to access it:
 %1</source>
         <translation>Die Streckendatei dieser Aktivität konnte nicht gelesen werden. Sie wurde möglicherweise verschoben oder gelöscht, oder die App darf nicht darauf zugreifen:
 %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="459"/>
+        <location filename="../qml/pages/SportPage.qml" line="500"/>
         <source>The track file of this activity has an unsupported format.</source>
         <translation>Die Streckendatei dieser Aktivität hat ein nicht unterstütztes Format.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="466"/>
+        <location filename="../qml/pages/SportPage.qml" line="507"/>
         <source>Heart Rate</source>
         <translation>Herzfrequenz</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="467"/>
+        <location filename="../qml/pages/SportPage.qml" line="508"/>
         <source>Ø %1 BPM</source>
         <translation>Ø %1 bpm</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="478"/>
+        <location filename="../qml/pages/SportPage.qml" line="519"/>
         <source>Pace</source>
         <translation>Tempo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="478"/>
+        <location filename="../qml/pages/SportPage.qml" line="519"/>
         <source>Speed</source>
         <translation>Geschwindigkeit</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="479"/>
+        <location filename="../qml/pages/SportPage.qml" line="267"/>
+        <location filename="../qml/pages/SportPage.qml" line="520"/>
         <source>km/h</source>
         <translation>km/h</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="491"/>
+        <location filename="../qml/pages/SportPage.qml" line="532"/>
         <source>Elevation</source>
         <translation>Höhe</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="503"/>
+        <location filename="../qml/pages/SportPage.qml" line="544"/>
         <source>Details</source>
         <translation>Details</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="522"/>
+        <location filename="../qml/pages/SportPage.qml" line="563"/>
         <source>Location</source>
         <translation>Ort</translation>
     </message>
@@ -2084,9 +2085,9 @@
         <translation type="vanished">Anaerobischer Trainingseffekt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="376"/>
+        <location filename="../qml/pages/SportPage.qml" line="417"/>
         <source>Average Heart Rate</source>
-        <translation>Durchschnittliche Herzfrequenz</translation>
+        <translation>Ø Herzfrequenz</translation>
     </message>
     <message>
         <source>Average Stroke Distance</source>
@@ -2165,12 +2166,12 @@
         <translation type="vanished">Position: %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="662"/>
+        <location filename="../qml/pages/SportPage.qml" line="703"/>
         <source>Send to FitTrackee</source>
         <translation>An FitTrackee senden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="675"/>
+        <location filename="../qml/pages/SportPage.qml" line="716"/>
         <source>Send to FitPub</source>
         <translation>An FitPub senden</translation>
     </message>
@@ -2183,9 +2184,9 @@
         <translation type="vanished">Durchschnitt HF</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="368"/>
+        <location filename="../qml/pages/SportPage.qml" line="409"/>
         <source>Average Pace</source>
-        <translation>Durchschnittliches Tempo</translation>
+        <translation>Ø Tempo</translation>
     </message>
     <message>
         <source>Average Stride</source>
@@ -2328,7 +2329,9 @@
         <translation type="vanished">m/s</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="479"/>
+        <location filename="../qml/pages/SportPage.qml" line="261"/>
+        <location filename="../qml/pages/SportPage.qml" line="264"/>
+        <location filename="../qml/pages/SportPage.qml" line="520"/>
         <source>min/km</source>
         <translation>min/km</translation>
     </message>
@@ -2397,7 +2400,7 @@
         <translation type="vanished">Swolf</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SportPage.qml" line="649"/>
+        <location filename="../qml/pages/SportPage.qml" line="690"/>
         <source>Send to Strava</source>
         <translation>An Strava senden</translation>
     </message>
@@ -3364,32 +3367,32 @@
         <translation>Schritte · Tagesziel</translation>
     </message>
     <message>
-        <location filename="../qml/components/StepsTile.qml" line="83"/>
+        <location filename="../qml/components/StepsTile.qml" line="107"/>
         <source>of %1</source>
         <translation>von %1</translation>
     </message>
     <message>
-        <location filename="../qml/components/StepsTile.qml" line="100"/>
+        <location filename="../qml/components/StepsTile.qml" line="124"/>
         <source>Deep sleep</source>
         <translation>Tiefschlaf</translation>
     </message>
     <message>
-        <location filename="../qml/components/StepsTile.qml" line="101"/>
+        <location filename="../qml/components/StepsTile.qml" line="125"/>
         <source>Light sleep</source>
         <translation>Leichtschlaf</translation>
     </message>
     <message>
-        <location filename="../qml/components/StepsTile.qml" line="102"/>
+        <location filename="../qml/components/StepsTile.qml" line="126"/>
         <source>Active</source>
         <translation>Aktiv</translation>
     </message>
     <message>
-        <location filename="../qml/components/StepsTile.qml" line="103"/>
+        <location filename="../qml/components/StepsTile.qml" line="127"/>
         <source>Inactive</source>
         <translation>Inaktiv</translation>
     </message>
     <message>
-        <location filename="../qml/components/StepsTile.qml" line="104"/>
+        <location filename="../qml/components/StepsTile.qml" line="128"/>
         <source>Step goal</source>
         <translation>Schrittziel</translation>
     </message>
@@ -3599,7 +3602,7 @@ Bitte ziehen Sie eine Spende in Betracht, wenn Sie diese Funktion nutzen.</trans
 <context>
     <name>TrackChart</name>
     <message>
-        <location filename="../qml/components/TrackChart.qml" line="102"/>
+        <location filename="../qml/components/TrackChart.qml" line="107"/>
         <source>No data</source>
         <translation>Keine Daten</translation>
     </message>
@@ -5046,55 +5049,55 @@ Bitte ziehen Sie eine Spende in Betracht, wenn Sie diese Funktion nutzen.</trans
         <location filename="../qml/components/Translation.js" line="306"/>
         <location filename="../qml/components/Translation.js" line="315"/>
         <source>Average Heart Rate</source>
-        <translation>Durchschnittliche Herzfrequenz</translation>
+        <translation>Ø Herzfrequenz</translation>
     </message>
     <message>
         <location filename="../qml/components/Translation.js" line="307"/>
         <location filename="../qml/components/Translation.js" line="350"/>
         <source>Average Pace</source>
-        <translation>Durchschnittliches Tempo</translation>
+        <translation>Ø Tempo</translation>
     </message>
     <message>
         <location filename="../qml/components/Translation.js" line="308"/>
         <source>Average Lap Pace</source>
-        <translation>Durchschnittliches Rundentempo</translation>
+        <translation>Ø Rundentempo</translation>
     </message>
     <message>
         <location filename="../qml/components/Translation.js" line="309"/>
         <source>Average Speed</source>
-        <translation>Durchschnittsgeschwindigkeit</translation>
+        <translation>Ø Geschwindigkeit</translation>
     </message>
     <message>
         <location filename="../qml/components/Translation.js" line="310"/>
         <location filename="../qml/components/Translation.js" line="355"/>
         <source>Average Stride</source>
-        <translation>Durchschnittliche Schrittlänge</translation>
+        <translation>Ø Schrittlänge</translation>
     </message>
     <message>
         <location filename="../qml/components/Translation.js" line="311"/>
         <source>Average Stroke Distance</source>
-        <translation>Durchschnittliche Zugstrecke</translation>
+        <translation>Ø Zugstrecke</translation>
     </message>
     <message>
         <location filename="../qml/components/Translation.js" line="312"/>
         <location filename="../qml/components/Translation.js" line="360"/>
         <source>Average Stroke Rate</source>
-        <translation>Durchschnittliche Zugfrequenz</translation>
+        <translation>Ø Zugfrequenz</translation>
     </message>
     <message>
         <location filename="../qml/components/Translation.js" line="313"/>
         <source>Average Altitude</source>
-        <translation>Durchschnittliche Höhe</translation>
+        <translation>Ø Höhe</translation>
     </message>
     <message>
         <location filename="../qml/components/Translation.js" line="316"/>
         <source>Average Slope</source>
-        <translation>Durchschnittliche Steigung</translation>
+        <translation>Ø Steigung</translation>
     </message>
     <message>
         <location filename="../qml/components/Translation.js" line="317"/>
         <source>Average Temperature</source>
-        <translation>Durchschnittstemperatur</translation>
+        <translation>Ø Temperatur</translation>
     </message>
     <message>
         <location filename="../qml/components/Translation.js" line="318"/>
@@ -5262,7 +5265,7 @@ Bitte ziehen Sie eine Spende in Betracht, wenn Sie diese Funktion nutzen.</trans
         <location filename="../qml/components/Translation.js" line="314"/>
         <location filename="../qml/components/Translation.js" line="354"/>
         <source>Average Cadence</source>
-        <translation>Durchschnittliche Kadenz</translation>
+        <translation>Ø Kadenz</translation>
     </message>
     <message>
         <location filename="../qml/components/Translation.js" line="330"/>
@@ -5278,7 +5281,7 @@ Bitte ziehen Sie eine Spende in Betracht, wenn Sie diese Funktion nutzen.</trans
     <message>
         <location filename="../qml/components/Translation.js" line="358"/>
         <source>Average Distance per Stroke</source>
-        <translation>Durchschnittliche Strecke pro Zug</translation>
+        <translation>Ø Strecke pro Zug</translation>
     </message>
     <message>
         <location filename="../qml/components/Translation.js" line="359"/>

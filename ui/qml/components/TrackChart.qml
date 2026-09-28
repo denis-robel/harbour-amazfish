@@ -14,7 +14,8 @@ Item {
     property bool invertY: false         // pace: faster (smaller) values at the top
     property var zoneLimits: []          // optional ascending limits, coloured like ChartColors.zones
     property real referenceValue: 0      // optional dashed reference line (e.g. average)
-    property var valueLabel: function(v) { return Math.round(v).toString(); }
+    // one decimal when the grid steps are smaller than 1 (e.g. 117.5 m), otherwise whole numbers
+    property var valueLabel: function(v) { return priv.stepSize < 1 ? v.toFixed(1) : Math.round(v).toString(); }
 
     readonly property bool noData: priv.count < 2
 
@@ -32,6 +33,7 @@ Item {
         property real minY: 0
         property real maxY: 1
         property real maxX: 1
+        property real stepSize: 1
 
         // smallest "nice" step that is >= raw
         function niceStep(raw) {
@@ -66,6 +68,7 @@ Item {
                 if (maxY >= hi) break;
                 step = niceStep(step * 1.01);
             }
+            stepSize = step;
             maxX = Math.max(1, mx);
         }
     }
@@ -90,7 +93,9 @@ Item {
 
             var fontPx = styler.themeFontSizeExtraSmall;
             ctx.font = fontPx + "px \"" + styler.themeFontFamily + "\"";
-            var axisW = fontPx * 3;
+            // wide enough for the longest axis label ("119.2", "35:00")
+            var axisW = Math.max(ctx.measureText(valueLabel(priv.minY)).width,
+                                 ctx.measureText(valueLabel(priv.maxY)).width) + fontPx * 0.8;
             var bottom = fontPx * 1.8;
             var top = fontPx * 0.6;
             var plotW = width - axisW;

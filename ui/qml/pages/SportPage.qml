@@ -228,6 +228,56 @@ PagePL {
         console.log("SportPage: estimated latitude", lat.toFixed(2), "distance", Math.round(trackDistance), "m");
     }
 
+    // Values of the watch summary arrive raw (seconds, s/m, m/s, floats with six
+    // significant digits); show them the way people read them.
+    function formatNumber(v) {
+        var a = Math.abs(v);
+        var decimals = a >= 100 ? 0 : (a >= 10 ? 1 : 2);
+        var text = Number(v).toLocaleString(Qt.locale(), "f", decimals);
+        if (decimals > 0) {
+            // drop trailing zeros after the decimal separator ("5,50" -> "5,5", "7,00" -> "7")
+            var sep = Qt.locale().decimalPoint;
+            text = text.replace(new RegExp("\\" + sep + "?0+$"), "");
+        }
+        return text;
+    }
+
+    function formatSeconds(sec) {
+        sec = Math.round(sec);
+        var h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), s = sec % 60;
+        var mm = (h > 0 && m < 10 ? "0" : "") + m;
+        return (h > 0 ? h + ":" + mm : mm) + ":" + (s < 10 ? "0" : "") + s;
+    }
+
+    // units like "min/km" must not break after the slash (U+2060 WORD JOINER)
+    function keepUnit(text) {
+        return text.replace(/\//g, "/\u2060");
+    }
+
+    function metaValue(value, unit) {
+        return keepUnit(rawMetaValue(value, unit));
+    }
+
+    function rawMetaValue(value, unit) {
+        var v = parseFloat(value);
+        if (isNaN(v) || !/^-?[0-9.eE+-]+$/.test(String(value).trim())) {
+            return value + (unit ? " " + T.translateSportUnit(unit) : "");   // text, e.g. swim style
+        }
+        if (unit === "seconds") {
+            return formatSeconds(v);
+        }
+        if (unit === "seconds_km" && v > 0) {
+            return formatSeconds(v) + " " + qsTr("min/km");
+        }
+        if (unit === "seconds_m" && v > 0) {
+            return formatSeconds(v * 1000) + " " + qsTr("min/km");
+        }
+        if (unit === "meters_second") {
+            return formatNumber(v * 3.6) + " " + qsTr("km/h");
+        }
+        return formatNumber(v) + (unit ? " " + T.translateSportUnit(unit) : "");
+    }
+
     function formatPace(minPerKm) {
         var total = Math.round(minPerKm * 60);
         var m = Math.floor(total / 60);
@@ -508,7 +558,7 @@ PagePL {
                 model: SportsMeta
                 delegate: DetailRow {
                     label: T.translateSportKey(model.key)
-                    value: model.value + " " + T.translateSportUnit(model.unit)
+                    value: page.metaValue(model.value, model.unit)
                     Component.onCompleted: {
                         if (model.key === "distanceMeters") {
                             page.watchDistance = parseFloat(model.value) || 0;
