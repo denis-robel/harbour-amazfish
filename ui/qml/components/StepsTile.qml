@@ -36,6 +36,30 @@ Tile {
 
     Component.onCompleted: refresh()
 
+    // Reload when a download from the watch has finished: new sleep or activity
+    // data may have arrived while the step count stayed the same (e.g. in the
+    // morning before the first steps).
+    Connections {
+        target: DaemonInterfaceInstance
+        onOperationRunningChanged: {
+            if (!DaemonInterfaceInstance.operationRunning) {
+                refreshTimer.stop();
+                tile.refresh();
+            }
+        }
+    }
+
+    // Also when the app returns to the foreground; refresh() starts the ring at
+    // today's midnight, so this covers a change of day as well.
+    Connections {
+        target: Qt.application
+        onStateChanged: {
+            if (Qt.application.state === Qt.ApplicationActive) {
+                tile.refresh();
+            }
+        }
+    }
+
     // Ring on the left, legend on the right (mockup variant B)
     contentItem: Item {
         id: area
