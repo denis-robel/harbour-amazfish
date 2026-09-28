@@ -19,7 +19,7 @@ Item {
     onWidthChanged: canvas.requestPaint()
     onHeightChanged: canvas.requestPaint()
 
-    Canvas {
+    ChartCanvas {
         id: canvas
         anchors.fill: parent
 

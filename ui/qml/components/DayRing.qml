@@ -22,7 +22,7 @@ Item {
     onSamplesChanged: canvas.requestPaint()
     onIdleColorChanged: canvas.requestPaint()
 
-    Canvas {
+    ChartCanvas {
         id: canvas
         anchors.fill: parent
         onWidthChanged: requestPaint()
@@ -49,6 +49,10 @@ Item {
 
             var cx = width / 2, cy = height / 2;
             var rad = Math.min(width, height) / 2 - ring.lineWidth / 2;
+            // see GaugeArc: skip until the ring has a real size, it repaints on resize
+            if (rad <= 0) {
+                return;
+            }
             var step = 2 * Math.PI / n;
             ctx.lineWidth = ring.lineWidth;
             ctx.lineCap = "butt";

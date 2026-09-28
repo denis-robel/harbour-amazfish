@@ -18,7 +18,7 @@ Item {
     onColorChanged: canvas.requestPaint()
     onTrackColorChanged: canvas.requestPaint()
 
-    Canvas {
+    ChartCanvas {
         id: canvas
         anchors.fill: parent
         onWidthChanged: requestPaint()
@@ -28,6 +28,11 @@ Item {
             var ctx = getContext("2d");
             ctx.clearRect(0, 0, width, height);
             var r = Math.min(width, height) / 2 - gauge.lineWidth / 2;
+            // no size yet (e.g. while the page was hidden): arc() would throw on a
+            // negative radius and abort painting; the size change repaints later
+            if (r <= 0) {
+                return;
+            }
             var cx = width / 2, cy = height / 2;
             var a0 = Math.PI * 0.75, sweep = Math.PI * 1.5;
 

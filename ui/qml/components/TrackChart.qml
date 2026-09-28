@@ -80,7 +80,7 @@ Item {
         return h > 0 ? h + ":" + (m < 10 ? "0" : "") + m : m + "'";
     }
 
-    Canvas {
+    ChartCanvas {
         id: canvas
         anchors.fill: parent
 

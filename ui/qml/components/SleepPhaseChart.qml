@@ -59,7 +59,7 @@ Item {
         }
     }
 
-    Canvas {
+    ChartCanvas {
         id: canvas
         anchors.fill: parent
 
