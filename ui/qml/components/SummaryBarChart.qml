@@ -16,6 +16,7 @@ Item {
     property bool showAverage: true
     property string labelMask: "ddd"
     property var valueLabel: function(v) { return Math.round(v).toString(); }
+    property var averageLabel: valueLabel   // text next to the average line
 
     readonly property bool stacked: points.length > 0 && typeof points[0].z !== "undefined"
     readonly property bool noData: priv.count === 0
@@ -158,10 +159,27 @@ Item {
             }
             ctx.font = fontPx + "px \"" + styler.themeFontFamily + "\"";
 
+            // average: scaled like the goal line (fixed 1-2 px dashes vanish on high-density
+            // screens), dotted rhythm to tell it apart, labelled at the right end
             if (showAverage && priv.average > 0) {
-                ctx.strokeStyle = styler.themeSecondaryColor;
-                ctx.lineWidth = 1;
-                ChartColors.dashedLine(ctx, axisW, width, Math.round(yOf(priv.average)) + 0.5, 2, 3);
+                var ay = Math.round(yOf(priv.average)) + 0.5;
+                ctx.strokeStyle = ChartColors.average;
+                ctx.lineWidth = Math.max(1.5, fontPx / 12);
+                ChartColors.dashedLine(ctx, axisW, width, ay, fontPx * 0.15, fontPx * 0.25);
+
+                var avgText = "Ø " + averageLabel(priv.average);
+                var goalY = goal > 0 ? yOf(goal) : -1000;
+                // put the label below the line if it would collide with the goal line
+                var labelY = (Math.abs(ay - goalY) < fontPx * 1.2 && goalY < ay) || ay - fontPx * 0.5 < top + fontPx
+                        ? ay + fontPx * 1.1 : ay - fontPx * 0.4;
+                ctx.font = "bold " + fontPx + "px \"" + styler.themeFontFamily + "\"";
+                ctx.textAlign = "right";
+                var tw = ctx.measureText(avgText).width;
+                ctx.fillStyle = ChartColors.withAlpha("#0e121c", 0.75);
+                ctx.fillRect(width - tw - fontPx * 0.5, labelY - fontPx, tw + fontPx * 0.5, fontPx * 1.3);
+                ctx.fillStyle = ChartColors.average;
+                ctx.fillText(avgText, width - fontPx * 0.25, labelY);
+                ctx.font = fontPx + "px \"" + styler.themeFontFamily + "\"";
             }
             if (goal > 0) {
                 ctx.strokeStyle = ChartColors.goal;

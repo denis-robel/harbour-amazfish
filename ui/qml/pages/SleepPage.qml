@@ -97,7 +97,7 @@ PagePL {
                     { color: ChartColors.deepSleep, label: qsTr("Deep sleep") },
                     { color: ChartColors.lightSleep, label: qsTr("Light sleep") },
                     { color: ChartColors.goal, label: qsTr("Goal"), line: true },
-                    { color: styler.themeSecondaryColor, label: qsTr("Average"), line: true }
+                    { color: ChartColors.average, label: qsTr("Average"), line: true }
                 ]
             }
 

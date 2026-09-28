@@ -67,6 +67,8 @@ PagePL {
             SummaryBarChart {
                 id: stepChart
                 goal: stepGoal
+                colorBelowGoal: ChartColors.belowGoal
+                averageLabel: function(v) { return fmt(v); }
                 valueLabel: function(v) {
                     return v >= 1000 ? (v / 1000).toLocaleString(Qt.locale(), "f", v % 1000 ? 1 : 0) + "k" : fmt(v);
                 }
@@ -75,9 +77,9 @@ PagePL {
             ChartLegend {
                 items: [
                     { color: ChartColors.active, label: qsTr("Goal reached") },
-                    { color: ChartColors.activeDim, label: qsTr("Below goal") },
+                    { color: ChartColors.belowGoal, label: qsTr("Below goal") },
                     { color: ChartColors.goal, label: qsTr("Daily goal"), line: true },
-                    { color: styler.themeSecondaryColor, label: qsTr("Average"), line: true }
+                    { color: ChartColors.average, label: qsTr("Average"), line: true }
                 ]
             }
         }
