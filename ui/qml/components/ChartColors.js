@@ -57,5 +57,5 @@ function formatDuration(minutes) {
     var m = Math.round(minutes);
     var h = Math.floor(m / 60);
     var r = m % 60;
-    return h + " h " + (r < 10 ? "0" : "") + r + " min";
+    return qsTr("%1 h %2 min").arg(h).arg((r < 10 ? "0" : "") + r);
 }

@@ -4,7 +4,7 @@
 <context>
     <name>AbstractDevice</name>
     <message>
-        <location filename="../src/devices/abstractdevice.cpp" line="200"/>
+        <location filename="../src/devices/abstractdevice.cpp" line="175"/>
         <source>Device does not support settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -85,7 +85,7 @@
 <context>
     <name>AsteroidOSDevice</name>
     <message>
-        <location filename="../src/devices/asteroidosdevice.cpp" line="271"/>
+        <location filename="../src/devices/asteroidosdevice.cpp" line="269"/>
         <source>Stored %1...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -93,12 +93,12 @@
 <context>
     <name>BangleJSDevice</name>
     <message>
-        <location filename="../src/devices/banglejsdevice.cpp" line="349"/>
+        <location filename="../src/devices/banglejsdevice.cpp" line="352"/>
         <source>Downloading activity data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/devices/banglejsdevice.cpp" line="370"/>
+        <location filename="../src/devices/banglejsdevice.cpp" line="371"/>
         <source>Downloading sports data</source>
         <translation type="unfinished"></translation>
     </message>
@@ -106,38 +106,39 @@
 <context>
     <name>DeviceInterface</name>
     <message>
-        <location filename="../src/deviceinterface.cpp" line="110"/>
-        <source>Device is not valid, it may not be supported</source>
+        <location filename="../src/deviceinterface.cpp" line="113"/>
+        <location filename="../src/deviceinterface.cpp" line="171"/>
+        <source>Device is not yet available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/deviceinterface.cpp" line="672"/>
-        <location filename="../src/deviceinterface.cpp" line="748"/>
+        <location filename="../src/deviceinterface.cpp" line="734"/>
+        <location filename="../src/deviceinterface.cpp" line="851"/>
         <source>Amazfish</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/deviceinterface.cpp" line="673"/>
+        <location filename="../src/deviceinterface.cpp" line="735"/>
         <source>Connected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/deviceinterface.cpp" line="674"/>
+        <location filename="../src/deviceinterface.cpp" line="736"/>
         <source>Phone and watch are connected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/deviceinterface.cpp" line="749"/>
+        <location filename="../src/deviceinterface.cpp" line="852"/>
         <source>Low Battery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/deviceinterface.cpp" line="750"/>
+        <location filename="../src/deviceinterface.cpp" line="853"/>
         <source>Battery level now </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/deviceinterface.cpp" line="885"/>
+        <location filename="../src/deviceinterface.cpp" line="988"/>
         <source>Calendar</source>
         <translation type="unfinished"></translation>
     </message>
@@ -199,8 +200,8 @@
 <context>
     <name>MiBandService</name>
     <message>
-        <location filename="../src/services/mibandservice.cpp" line="422"/>
-        <location filename="../src/services/mibandservice.cpp" line="482"/>
+        <location filename="../src/services/mibandservice.cpp" line="440"/>
+        <location filename="../src/services/mibandservice.cpp" line="487"/>
         <source>Firmware is too old to set display items, V0.1.1.14 is required</source>
         <translation type="unfinished"></translation>
     </message>
@@ -208,20 +209,20 @@
 <context>
     <name>PinetimeJFDevice</name>
     <message>
-        <location filename="../src/devices/pinetimejfdevice.cpp" line="344"/>
-        <location filename="../src/devices/pinetimejfdevice.cpp" line="358"/>
+        <location filename="../src/devices/pinetimejfdevice.cpp" line="342"/>
+        <location filename="../src/devices/pinetimejfdevice.cpp" line="356"/>
         <source>An operation is currently running, please try later</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/devices/pinetimejfdevice.cpp" line="381"/>
-        <location filename="../src/devices/pinetimejfdevice.cpp" line="394"/>
+        <location filename="../src/devices/pinetimejfdevice.cpp" line="379"/>
+        <location filename="../src/devices/pinetimejfdevice.cpp" line="392"/>
         <source>Sending file...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/devices/pinetimejfdevice.cpp" line="384"/>
-        <location filename="../src/devices/pinetimejfdevice.cpp" line="397"/>
+        <location filename="../src/devices/pinetimejfdevice.cpp" line="382"/>
+        <location filename="../src/devices/pinetimejfdevice.cpp" line="395"/>
         <source>No file selected</source>
         <translation type="unfinished"></translation>
     </message>
