@@ -1,0 +1,2 @@
+/usr/bin/ar qc libo2.a CMakeFiles/o2.dir/o2_autogen/mocs_compilation.cpp.o CMakeFiles/o2.dir/o2.cpp.o CMakeFiles/o2.dir/o2reply.cpp.o CMakeFiles/o2.dir/o2replyserver.cpp.o CMakeFiles/o2.dir/o2requestor.cpp.o CMakeFiles/o2.dir/o2simplecrypt.cpp.o CMakeFiles/o2.dir/o0settingsstore.cpp.o CMakeFiles/o2.dir/o0baseauth.cpp.o
+/usr/bin/ranlib libo2.a

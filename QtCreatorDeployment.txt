@@ -1,0 +1,2 @@
+/usr
+/home/denis/Development/SailfishOS/harbour-amazfish/harbour-amazfish-ui:bin

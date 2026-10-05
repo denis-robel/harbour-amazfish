@@ -1,0 +1,177 @@
+{
+	"BUILD_DIR" : "/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o2_autogen",
+	"CMAKE_BINARY_DIR" : "/home/denis/Development/SailfishOS/harbour-amazfish",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src",
+	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/CMakeLists.txt",
+		"/usr/lib64/cmake/Qt5/Qt5ConfigVersion.cmake",
+		"/usr/lib64/cmake/Qt5/Qt5Config.cmake",
+		"/usr/lib64/cmake/Qt5Core/Qt5CoreConfigVersion.cmake",
+		"/usr/lib64/cmake/Qt5Core/Qt5CoreConfig.cmake",
+		"/usr/lib64/cmake/Qt5Network/Qt5NetworkConfigVersion.cmake",
+		"/usr/lib64/cmake/Qt5Network/Qt5NetworkConfig.cmake"
+	],
+	"CMAKE_SOURCE_DIR" : "/home/denis/Development/SailfishOS/harbour-amazfish",
+	"CROSS_CONFIG" : false,
+	"DEP_FILE" : "",
+	"DEP_FILE_RULE_NAME" : "",
+	"HEADERS" : 
+	[
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o0abstractstore.h",
+			"MU",
+			"EWIEGA46WW/moc_o0abstractstore.cpp",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o0baseauth.h",
+			"MU",
+			"EWIEGA46WW/moc_o0baseauth.cpp",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o0export.h",
+			"MU",
+			"EWIEGA46WW/moc_o0export.cpp",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o0globals.h",
+			"MU",
+			"EWIEGA46WW/moc_o0globals.cpp",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o0requestparameter.h",
+			"MU",
+			"EWIEGA46WW/moc_o0requestparameter.cpp",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o0settingsstore.h",
+			"MU",
+			"EWIEGA46WW/moc_o0settingsstore.cpp",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o0simplecrypt.h",
+			"MU",
+			"EWIEGA46WW/moc_o0simplecrypt.cpp",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o2.h",
+			"MU",
+			"EWIEGA46WW/moc_o2.cpp",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o2reply.h",
+			"MU",
+			"EWIEGA46WW/moc_o2reply.cpp",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o2replyserver.h",
+			"MU",
+			"EWIEGA46WW/moc_o2replyserver.cpp",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o2requestor.h",
+			"MU",
+			"EWIEGA46WW/moc_o2requestor.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o2_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o2_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"KF5CALENDARCORE",
+		"MER_EDITION_SAILFISH",
+		"PROJECT_GIT_VERSION=\"2.9.0+ui.komplett.20261005063451.ee070b8f\"",
+		"QT_CORE_LIB",
+		"QT_NETWORK_LIB",
+		"QT_NO_DEBUG",
+		"QT_NO_DEBUG_OUTPUT=1"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src",
+		"/usr/include/qt5",
+		"/usr/include/qt5/QtCore",
+		"/usr/share/qt5/mkspecs/linux-g++",
+		"/usr/include/qt5/QtNetwork"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : [],
+	"MOC_PREDEFS_FILE" : "",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 8,
+	"PARSE_CACHE_FILE" : "/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/CMakeFiles/o2_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/usr/lib64/qt5/bin/moc",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 5,
+	"QT_VERSION_MINOR" : 6,
+	"SETTINGS_FILE" : "/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/CMakeFiles/o2_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o0baseauth.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o0settingsstore.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o2.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o2reply.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o2replyserver.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o2requestor.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/ui/o2/src/o2simplecrypt.cpp",
+			"MU",
+			null
+		]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"USE_BETTER_GRAPH" : false,
+	"VERBOSITY" : 0
+}

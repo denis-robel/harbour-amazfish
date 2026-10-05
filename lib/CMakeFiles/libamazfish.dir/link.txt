@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblibamazfish.a CMakeFiles/libamazfish.dir/libamazfish_autogen/mocs_compilation.cpp.o CMakeFiles/libamazfish.dir/src/amazfishconfig.cpp.o CMakeFiles/libamazfish.dir/src/weather/city.cpp.o CMakeFiles/libamazfish.dir/src/weather/citymanager.cpp.o CMakeFiles/libamazfish.dir/src/weather/citysearchmodel.cpp.o CMakeFiles/libamazfish.dir/src/weather/currentweather.cpp.o CMakeFiles/libamazfish.dir/src/activitykind.cpp.o
+/usr/bin/ranlib liblibamazfish.a

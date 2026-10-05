@@ -1,0 +1,159 @@
+{
+	"BUILD_DIR" : "/home/denis/Development/SailfishOS/harbour-amazfish/lib/libamazfish_autogen",
+	"CMAKE_BINARY_DIR" : "/home/denis/Development/SailfishOS/harbour-amazfish",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/denis/Development/SailfishOS/harbour-amazfish/lib",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/denis/Development/SailfishOS/harbour-amazfish/lib",
+	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/home/denis/Development/SailfishOS/harbour-amazfish/lib/CMakeLists.txt",
+		"/usr/lib64/cmake/Qt5/Qt5ConfigVersion.cmake",
+		"/usr/lib64/cmake/Qt5/Qt5Config.cmake",
+		"/usr/lib64/cmake/Qt5Core/Qt5CoreConfigVersion.cmake",
+		"/usr/lib64/cmake/Qt5Core/Qt5CoreConfig.cmake",
+		"/usr/lib64/cmake/Qt5DBus/Qt5DBusConfigVersion.cmake",
+		"/usr/lib64/cmake/Qt5DBus/Qt5DBusConfig.cmake",
+		"/usr/lib64/cmake/Qt5Xml/Qt5XmlConfigVersion.cmake",
+		"/usr/lib64/cmake/Qt5Xml/Qt5XmlConfig.cmake"
+	],
+	"CMAKE_SOURCE_DIR" : "/home/denis/Development/SailfishOS/harbour-amazfish",
+	"CROSS_CONFIG" : false,
+	"DEP_FILE" : "",
+	"DEP_FILE_RULE_NAME" : "",
+	"HEADERS" : 
+	[
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/lib/src/activitykind.h",
+			"MU",
+			"UVLADIE3JM/moc_activitykind.cpp",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/lib/src/amazfish.h",
+			"MU",
+			"UVLADIE3JM/moc_amazfish.cpp",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/lib/src/amazfishconfig.h",
+			"MU",
+			"UVLADIE3JM/moc_amazfishconfig.cpp",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/lib/src/weather/apikey.h",
+			"MU",
+			"2JQT26BTCO/moc_apikey.cpp",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/lib/src/weather/city.h",
+			"MU",
+			"2JQT26BTCO/moc_city.cpp",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/lib/src/weather/citymanager.h",
+			"MU",
+			"2JQT26BTCO/moc_citymanager.cpp",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/lib/src/weather/citysearchmodel.h",
+			"MU",
+			"2JQT26BTCO/moc_citysearchmodel.cpp",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/lib/src/weather/currentweather.h",
+			"MU",
+			"2JQT26BTCO/moc_currentweather.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/home/denis/Development/SailfishOS/harbour-amazfish/lib/libamazfish_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/denis/Development/SailfishOS/harbour-amazfish/lib/libamazfish_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"KF5CALENDARCORE",
+		"MER_EDITION_SAILFISH",
+		"PROJECT_GIT_VERSION=\"2.9.0+ui.komplett.20261005063451.ee070b8f\"",
+		"QT_CORE_LIB",
+		"QT_DBUS_LIB",
+		"QT_NO_DEBUG",
+		"QT_XML_LIB"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/home/denis/Development/SailfishOS/harbour-amazfish/lib",
+		"/home/denis/Development/SailfishOS/harbour-amazfish/lib/src",
+		"/usr/include/mlite5",
+		"/usr/include/qt5/QtDBus",
+		"/usr/include/qt5",
+		"/usr/include/qt5/QtCore",
+		"/usr/share/qt5/mkspecs/linux-g++",
+		"/usr/include/qt5/QtXml"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : [],
+	"MOC_PREDEFS_FILE" : "",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 8,
+	"PARSE_CACHE_FILE" : "/home/denis/Development/SailfishOS/harbour-amazfish/lib/CMakeFiles/libamazfish_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/usr/lib64/qt5/bin/moc",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 5,
+	"QT_VERSION_MINOR" : 6,
+	"SETTINGS_FILE" : "/home/denis/Development/SailfishOS/harbour-amazfish/lib/CMakeFiles/libamazfish_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/lib/src/activitykind.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/lib/src/amazfishconfig.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/lib/src/weather/city.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/lib/src/weather/citymanager.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/lib/src/weather/citysearchmodel.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/denis/Development/SailfishOS/harbour-amazfish/lib/src/weather/currentweather.cpp",
+			"MU",
+			null
+		]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"USE_BETTER_GRAPH" : false,
+	"VERBOSITY" : 0
+}
